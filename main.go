@@ -11,6 +11,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// test
 func main() {
 	connStr := os.Getenv("DB_CONNECTION")
 	db, err := sql.Open("postgres", connStr)
