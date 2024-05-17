@@ -15,14 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
-
       - uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 5
         env:
@@ -83,9 +82,9 @@ jobs:
       - name: change image tag
         run: |
           git --version
-          git config user.name "tonkhab"    
-          git config user.email "root@tonkhab.link"
-          sed -i -E "s/ghcr.io\/tonkhab-training\/devops-go-example.*$/ghcr.io\/tonkhab-training\/devops-go-example:${GITHUB_SHA}/" kube-gitops/deployment.yml
+          git config user.name "aorjoa"
+          git config user.email "root@aorjoa.link"
+          sed -i -E "s/ghcr.io\/LGROW101\/devops-go-example.*$/ghcr.io\/LGROW101\/devops-go-example:${GITHUB_SHA}/" kube-gitops/deployment.yml
           git add kube-gitops/deployment.yml
           git commit -m "🤖 change docker image version to ${GITHUB_SHA}"
       - name: push changes
